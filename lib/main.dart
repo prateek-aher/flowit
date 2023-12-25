@@ -5,8 +5,7 @@ import 'package:flutter/services.dart';
 import 'app.dart';
 
 void main() {
-  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.dark
-      .copyWith(statusBarIconBrightness: Brightness.light));
+  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
   debugRepaintRainbowEnabled = false;
   runApp(const MyApp());
 }
