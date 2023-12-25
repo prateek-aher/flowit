@@ -15,21 +15,21 @@ class NavbarWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      // height: 100.h,
-      padding: EdgeInsets.only(top: 17.h),
-      decoration: BoxDecoration(
-          gradient: LinearGradient(
-        begin: const Alignment(0.00, -1.00),
-        end: const Alignment(0, 1),
-        colors: [
-          Colors.white.withOpacity(0.15000000596046448),
-          Colors.white.withOpacity(0.05000000074505806)
-        ],
-      )),
-      child: ClipRRect(
-        child: BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+    return ClipRRect(
+      child: BackdropFilter(
+        filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+        child: Container(
+          height: 96.h,
+          padding: EdgeInsets.only(top: 17.h),
+          decoration: BoxDecoration(
+              gradient: LinearGradient(
+            begin: const Alignment(0.00, -1.00),
+            end: const Alignment(0, 1),
+            colors: [
+              Colors.white.withOpacity(0.15),
+              Colors.white.withOpacity(0.05)
+            ],
+          )),
           child: BlocBuilder<NavbarBloc, NavbarState>(
             builder: (context, state) {
               return BottomNavigationBar(

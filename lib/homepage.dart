@@ -55,99 +55,110 @@ class _HomePageState extends State<HomePage> {
         FocusScope.of(context).unfocus();
       },
       child: Scaffold(
-        body: SafeArea(
-          child: ListView(
-            shrinkWrap: true,
-            children: [
-              Padding(
-                padding: EdgeInsets.fromLTRB(16.w, 8.h, 16.w, 12.h),
-                child: Text(
-                  "Flow It",
-                  style: GoogleFonts.mogra(
-                      fontSize: 23.12.sp,
-                      fontWeight: FontWeight.w400,
-                      height: 0,
-                      color: Colors.white),
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 0),
-                child: searchField(),
-              ),
-              SizedBox(height: 24.h),
-              categoriesWidget(),
-              SizedBox(height: 23.h),
-              ...productsCarousel(),
-              SizedBox(height: 55.h),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
+        body: Stack(
+          fit: StackFit.expand,
+          children: [
+            SafeArea(
+              child: ListView(
+                shrinkWrap: true,
                 children: [
-                  SizedBox(
-                      height: 30.h,
-                      width: 30.h,
-                      child: Image.asset("assets/images/discount_coupon.png")),
-                  Text(
-                    'Deals for you',
-                    style: GoogleFonts.montserrat(
-                      color: Colors.white,
-                      fontSize: 16.sp,
-                      fontWeight: FontWeight.w700,
-                      height: 0,
+                  Padding(
+                    padding: EdgeInsets.fromLTRB(16.w, 8.h, 16.w, 12.h),
+                    child: Text(
+                      "Flow It",
+                      style: GoogleFonts.mogra(
+                          fontSize: 23.12.sp,
+                          fontWeight: FontWeight.w400,
+                          height: 0,
+                          color: Colors.white),
+                    ),
+                  ),
+                  Padding(
+                    padding:
+                        EdgeInsets.symmetric(horizontal: 16.w, vertical: 0),
+                    child: searchField(),
+                  ),
+                  SizedBox(height: 24.h),
+                  categoriesWidget(),
+                  SizedBox(height: 23.h),
+                  ...productsCarousel(),
+                  SizedBox(height: 55.h),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      SizedBox(
+                          height: 30.h,
+                          width: 30.h,
+                          child:
+                              Image.asset("assets/images/discount_coupon.png")),
+                      Text(
+                        'Deals for you',
+                        style: GoogleFonts.montserrat(
+                          color: Colors.white,
+                          fontSize: 16.sp,
+                          fontWeight: FontWeight.w700,
+                          height: 0,
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 21.h),
+                  ...dealsCarousel(),
+                  SizedBox(height: 40.h),
+                  Padding(
+                    padding:
+                        EdgeInsets.symmetric(horizontal: 16.w, vertical: 0),
+                    child: Text(
+                      'Featured Products by category',
+                      style: GoogleFonts.montserrat(
+                        color: Colors.white,
+                        fontSize: 16.sp,
+                        fontWeight: FontWeight.w700,
+                        height: 0,
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 24.h),
+                  ...featuredProductsByCategoryWidget(
+                      "Poi", featuredProductsPoiAssets),
+                  SizedBox(height: 24.h),
+                  ...featuredProductsByCategoryWidget(
+                      "Triad", featuredProductsTriadAssets),
+                  SizedBox(height: 24.h),
+                  ...featuredProductsByCategoryWidget(
+                      "Dapostar", featuredProductsDapostarAssets),
+                  SizedBox(height: 40.h),
+                  newArrivalsSection(),
+                  SizedBox(height: 40.h),
+                  bestSellingSection(),
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Directionality(
+                      textDirection: TextDirection.rtl,
+                      child: TextButton.icon(
+                        onPressed: () {},
+                        icon: SvgPicture.asset("assets/icons/next.svg"),
+                        label: Text(
+                          'See all products',
+                          style: GoogleFonts.montserrat(
+                            color: const Color(0xFFD83790),
+                            fontSize: 14.sp,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                      ),
                     ),
                   ),
                 ],
               ),
-              SizedBox(height: 21.h),
-              ...dealsCarousel(),
-              SizedBox(height: 40.h),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 0),
-                child: Text(
-                  'Featured Products by category',
-                  style: GoogleFonts.montserrat(
-                    color: Colors.white,
-                    fontSize: 16.sp,
-                    fontWeight: FontWeight.w700,
-                    height: 0,
-                  ),
-                ),
-              ),
-              SizedBox(height: 24.h),
-              ...featuredProductsByCategoryWidget(
-                  "Poi", featuredProductsPoiAssets),
-              SizedBox(height: 24.h),
-              ...featuredProductsByCategoryWidget(
-                  "Triad", featuredProductsTriadAssets),
-              SizedBox(height: 24.h),
-              ...featuredProductsByCategoryWidget(
-                  "Dapostar", featuredProductsDapostarAssets),
-              SizedBox(height: 40.h),
-              newArrivalsSection(),
-              SizedBox(height: 40.h),
-              bestSellingSection(),
-              Align(
-                alignment: Alignment.centerLeft,
-                child: Directionality(
-                  textDirection: TextDirection.rtl,
-                  child: TextButton.icon(
-                    onPressed: () {},
-                    icon: SvgPicture.asset("assets/icons/next.svg"),
-                    label: Text(
-                      'See all products',
-                      style: GoogleFonts.montserrat(
-                        color: const Color(0xFFD83790),
-                        fontSize: 14.sp,
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
+            ),
+            const Align(
+              alignment: Alignment.bottomCenter,
+              child: NavbarWidget(),
+            )
+          ],
         ),
-        bottomNavigationBar: const NavbarWidget(),
       ),
     );
   }
